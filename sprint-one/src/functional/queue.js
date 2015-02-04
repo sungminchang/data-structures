@@ -20,7 +20,7 @@ var Queue = function(){
     return result;
   };
 
-  someInstance.tail = function(){
+  someInstance.size = function(){
     return tail - head;
   };
 
