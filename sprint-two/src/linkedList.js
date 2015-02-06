@@ -4,12 +4,33 @@ var LinkedList = function(){
   list.tail = null;
 
   list.addToTail = function(value){
+    var newTail = Node(value);
+    if (list.head === null) {
+      list.head = newTail;
+    } else {
+      list.tail.next = newTail;
+    }
+    list.tail = newTail;
   };
 
   list.removeHead = function(){
+    var result = list.head;
+    list.head = list.head.next;
+    return result.value;
   };
 
-  list.contains = function(target){
+  list.contains = function(target, node){
+    node = node || list.head;
+
+    if (node.value === target) {
+      return true;
+    } else {
+      if (node.next === null) {
+        return false;
+      } else {
+        return list.contains(target, node.next);
+      }
+    }
   };
 
   return list;
